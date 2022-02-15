@@ -1,0 +1,5 @@
+# Ignore all .sbv files
+*.sbv
+
+# Ignore all .DS_Store
+.DS_Store
