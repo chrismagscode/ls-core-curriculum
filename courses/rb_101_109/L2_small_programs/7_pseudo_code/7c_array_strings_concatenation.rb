@@ -15,7 +15,6 @@
   # return saved_value
 
 # PROGRAM CODE
-
 def add_strings(array)
   saved_value = array[0]
   iterator = 1
