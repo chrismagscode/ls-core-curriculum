@@ -1,0 +1,50 @@
+# PSEUDO CODE
+# Given a collection of integers
+# save the initial value in the collection into a variable "saved value"
+
+# iterate through the entire collection one by one
+# 	save the current value to variable "current value"
+# 	compare "saved value" to the "current value"
+# 	if "saved value" is greater than "current value"
+# 		move to the next value in the iteration
+# 	if "current value" is greater than "saved value"
+# 		set "saved value" equal to "current value"
+# output "saved value"
+
+# FORMAL PSEUDO CODE
+# START
+# # given a collection of integers
+
+# SET saved_value = first value of the collection
+# SET iterator = 1
+
+# WHILE iterator < collection.length
+# 	SET current_value = collection[iterator]
+# 	IF saved_value < current_value
+# 		saved_value = current_value
+# 		iterator += 1
+# 	ELSE
+# 		iterator += 1
+
+# PRINT saved_value
+
+# END
+
+# PROGRAM CODE
+def highest_value(collection)
+	saved_value = collection[0]
+	iterator = 0
+	
+	while iterator < collection.length
+		current_value = collection[iterator]
+		if current_value > saved_value
+			saved_value = current_value
+			iterator += 1
+		else
+			iterator += 1
+		end
+	end
+	Kernel.puts(saved_value)
+end
+
+highest_value([1,2,3,4,5])
