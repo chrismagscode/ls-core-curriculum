@@ -19,11 +19,11 @@
 def add_strings(array)
   saved_value = array[0]
   iterator = 1
-  while iterator <= array.length
-    saved_value += collection[iterator]
+  while iterator < array.length
+    saved_value += array[iterator]
     iterator += 1
   end
-  saved_value
+  return saved_value
 end
-array = ['c', 'd', 'cat', 'dan']
+array = ['c', 'a', 't', 'dog']
 p add_strings(array)
