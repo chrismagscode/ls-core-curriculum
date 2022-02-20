@@ -30,7 +30,7 @@
 # PROGRAM CODE
 def highest_value(collection)
 	saved_value = collection[0]
-	iterator = 0
+	iterator = 1
 	
 	while iterator < collection.length
 		current_value = collection[iterator]
