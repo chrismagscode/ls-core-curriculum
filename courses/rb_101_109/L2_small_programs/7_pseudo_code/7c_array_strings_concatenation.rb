@@ -1,3 +1,5 @@
+# a method that takes an array of strings, and returns a string that is all those strings concatenated together
+
 # PSEUDO CODE
   # Given an array of strings
   # Iterate through the collection one by one

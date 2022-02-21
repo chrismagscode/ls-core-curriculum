@@ -1,3 +1,6 @@
+# a method that takes an array of integers, and returns a new array with every other element 
+# from the original array, starting with the first element.
+
 # PSEUDO CODE
   # Given an array of integers.
   # Create an empty array called new_array

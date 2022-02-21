@@ -1,6 +1,6 @@
 # Return sum of two integers
 
-# # PSEUDO CODE
+# PSEUDO CODE
   # Given two integers from user
   # add the two integers together
 
