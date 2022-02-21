@@ -11,8 +11,6 @@
   # SET integer_2 = value of second number from user
   # Add integer_1 + integer_2
 
-
-
 # PROGRAM CODE
 def sum(num_1, num_2)
   num_1 + num_2

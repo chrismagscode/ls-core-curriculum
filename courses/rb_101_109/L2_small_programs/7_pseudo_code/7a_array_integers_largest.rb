@@ -1,19 +1,18 @@
 # PSEUDO CODE
   # Given a collection of integers
-  # save the initial value in the collection into a variable "saved value"
-
-  # iterate through the entire collection one by one
-  # 	save the current value to variable "current value"
-  # 	compare "saved value" to the "current value"
+  # Save the initial value in the collection into a variable "saved value"
+  # Iterate through the entire collection one by one
+  # 	Save the current value to variable "current value"
+  # 	For each iteration, compare "saved value" to the "current value"
   # 	if "saved value" is greater than "current value"
-  # 		move to the next value in the iteration
+  # 		Move to the next value in the iteration
   # 	if "current value" is greater than "saved value"
-  # 		set "saved value" equal to "current value"
-  # output "saved value"
+  # 		Set "saved value" equal to "current value"
+  # Output "saved value"
 
 # FORMAL PSEUDO CODE
   # START
-  # # given a collection of integers
+  # Given a collection of integers
   # SET saved_value = first value of the collection
   # SET iterator = 1
 
