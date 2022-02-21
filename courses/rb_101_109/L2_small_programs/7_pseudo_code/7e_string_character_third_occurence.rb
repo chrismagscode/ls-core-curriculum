@@ -6,11 +6,15 @@
 # PSEUDO CODE
 # Given a string
 # Get a character from user and save as the saved character.
-# Create a counter variable that tracks the count of characters in string. Start with zero.
-# Create iterator variable that represents index of the string; start at the beginning of the string.
+# Create a counter variable that tracks the count of characters 
+# in string. Start with zero.
+# Create iterator variable that represents index of the string; 
+# start at the beginning of the string.
 # Iterate through the entire string, each character one by one.
-#     For each iteration, compare the saved character with current character.
-#     If current character equals saved character, increment counter variable by 1.
+#     For each iteration, compare the saved character with current 
+#     character.
+#     If current character equals saved character, increment counter 
+#     variable by 1.
 #         If counter equals 3, return iterator
 #     Increment iterator by 1
 # If counter < 3, return nil     
