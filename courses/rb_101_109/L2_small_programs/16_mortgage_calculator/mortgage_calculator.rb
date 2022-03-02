@@ -28,7 +28,10 @@ end
 
 # Given loan_amount, annual_percent_rate, loan_duration_years
 prompt("Please enter the loan amount in dollars ($).")
-ln_amount = usr_input
+ln_amount = nil
+loop do
+  break if ln_amount = usr_input > 0
+end
 prompt("Please enter the loan duration in years.")
 ln_duration_years = usr_input
 prompt("Please enter the annual percent rate (APR) (for example: 6 for 6%; 10 for 10%).")
