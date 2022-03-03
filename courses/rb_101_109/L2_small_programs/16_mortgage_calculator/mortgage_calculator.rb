@@ -26,37 +26,44 @@ def usr_input
   loop do
     temp = Kernel.gets.chomp.to_f
     break if temp > 0.0
-    prompt("Please enter an amount > 0.")
+
+    prompt('Please enter an amount > 0.')
   end
   temp
 end
 
-def mortgage_calculator
-  prompt("Welcome to Mortgage Calculator!")
-  prompt("We will calulate your monthly payment for your mortgage.")
-  Kernel.puts("-------------")
-  
-  loop do
-    prompt("Please enter the loan amount in dollars ($).")
-    ln_amount = usr_input.to_i
-    # prompt("Loan amount: $#{ln_amount}.")
-
-    prompt("Please enter the loan duration in years.")
-    ln_duration_years = usr_input
-    # prompt("Loan duration in years: #{ln_duration_years}.")
-
-    prompt("Please enter the annual interest rate (APR).")
-    prompt("For example: 6 is 6%; 10 is 10%).")
-    an_interest_rate = usr_input
-    mn_interest_rate = an_interest_rate / 100 / 12
-    ln_duration_months = ln_duration_years * 12
-    mn_payment = ln_amount * (mn_interest_rate / (1 - (1 + mn_interest_rate)**(-ln_duration_months)))
-    prompt("Your monthly payment is: $#{format('%.2f', mn_payment)}")
-    prompt("Would you like to make another calculation? Type 'Y' or 'N'")
-    answer = Kernel.gets.chomp.downcase
-    break if answer == 'n'
-  end
-prompt("Thank you for using Mortgage Calculator. Have a great day!")
+def monthly_payment(loan_amount, loan_duration_years, annual_interest_rate)
+  mn_interest_rate = annual_interest_rate / 100 / 12
+  ln_duration_months = loan_duration_years * 12
+  loan_amount * (mn_interest_rate / (1 - (1 + mn_interest_rate)**-ln_duration_months))
 end
 
-mortgage_calculator
+prompt('Welcome to Mortgage Calculator!')
+prompt('We will calulate your monthly payment for your mortgage.')
+Kernel.puts('-------------')
+
+loop do
+  prompt('Please enter the loan amount in dollars ($).')
+  ln_amount = usr_input.to_i
+
+  prompt('Please enter the loan duration in years.')
+  p ln_duration_years = usr_input
+
+  prompt('Please enter the annual interest rate (APR).')
+  prompt('For example: 6 is 6%; 10 is 10%).')
+  an_interest_rate = usr_input
+  mn_payment = monthly_payment(ln_amount, ln_duration_years, an_interest_rate)
+  prompt("Your monthly payment is: $#{mn_payment.round(2)}.")
+
+  prompt("Would you like to make another calculation? Type 'y' or 'n'")
+  answer = nil
+  loop do
+    answer = Kernel.gets.chomp.downcase
+    break if %([y n]).include?(answer)
+
+    prompt('Please enter y or n.')
+  end
+  break if answer == 'n'
+end
+
+prompt('Thank you for using Mortgage Calculator. Have a great day!')
