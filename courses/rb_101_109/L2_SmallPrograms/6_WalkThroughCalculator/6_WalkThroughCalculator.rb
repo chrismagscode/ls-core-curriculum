@@ -6,7 +6,7 @@
 # answer = Kernel.gets()
 # Kernel.puts(answer)
 
-Kernel.puts("Welcom to Calculator!")
+Kernel.puts("Welcome to Calculator!")
 
 Kernel.puts("What's the first number?")
 number1 = Kernel.gets().chomp()
