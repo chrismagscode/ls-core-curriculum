@@ -1,69 +1,99 @@
 # frozen_string_literal: true
 
+# mortgage calculator
+
 # PSEUDO CODE
-# Given value 1= loan_amount (dollars), annual percent rate, and loan duration (years)
-# Convert value 2= annual percent rate to monthly percent rate
-# Convert value 3= loan duration in years to loan duration in months
-# Calculate monthly payment using value 1, value 2, and value 3
-# Return monthly payment
+
+# Prompt user to input loan amount. Make sure it's in dollars
+# Get annual percentage rate (APR). Make sure it is in percentage format i.e. 5 = 5%
+# Get loan duration in years
+
+# Calculate Monthly Interest Rate
+# change annual interest rate to decimal form
+# change annual interest rate to monthly interest rate
+
+# Calculate Loan Duration in Months
+# get loan duration in years, multiply by 12 to get loan duration in months
+
+# Calculate Monthly Payment
+# monthly_payment = loan_amount * (interest_rate_m / (1 - (1 + interest_rate_m)**(-loan_duration_m)))
+
+# Output Monthly Payment
 
 # FORMAL PSEUDO CODE
-# Initialize variables loan_amount, annual_percent_rate, loan_duration_years
-# GET loan_amount, annual_percent_rate, loan_duration_years
-# SET loan_amount
-# SET monthly_percent_rate
-# SET loan_duration_months
-# SET monthly_payment
-# RETURN monthly_payment
 
-# MACHINE CODE
-def prompt(string)
-  Kernel.puts("=> #{string}")
+# START
+
+# Prompt user to input loan amount. Make sure it's in dollars
+# GET loan_amount_y
+
+# Get annual percentage rate (APR). Make sure it is in percentage format i.e. 5 = 5%
+# GET percentage_rate_a
+# SET percentage_rate_a
+
+# Get loan duration in years
+# GET loan_duration_y
+# SET loan_duration_y
+
+# Calculate Monthly Interest Rate
+# Change Annual Interest Rate To Decimal Form
+# SET decimal_interest_rate_a = percentage_rate_a / 100
+
+# Change Annual Interest Rate to Monthly Interest Rate
+# SET monthly_interest_rate = decimal_interest_rate_a * 12
+
+# Calculate Loan Duration in Months
+# loan_duration_m = loan_duration_y * 12
+
+# Calculate Monthly Payment
+# SET monthly_payment = loan_amount * (interest_rate_m / (1 - (1 + interest_rate_m)**(-loan_duration_m)))
+
+# PRINT Monthly Payment
+
+# END
+
+# RUBY CODE
+
+def prompt(message)
+  Kernel.puts("=> #{message}")
 end
 
-def usr_input
-  temp = nil
+# obtain number
+# check if number is > 0, if so, return true
+# if not, prompt user to enter another number
+
+def obtain_number
+  number = nil
   loop do
-    temp = Kernel.gets.chomp.to_f
-    break if temp > 0.0
+    number = Kernel.gets.chomp.to_f
+    break if number.positive?
 
-    prompt('Please enter an amount > 0.')
+    prompt('Please enter a value greater than zero.')
   end
-  temp
+  number
 end
-
-def monthly_payment(loan_amount, loan_duration_years, annual_interest_rate)
-  mn_interest_rate = annual_interest_rate / 100 / 12
-  ln_duration_months = loan_duration_years * 12
-  loan_amount * (mn_interest_rate / (1 - (1 + mn_interest_rate)**-ln_duration_months))
-end
-
-prompt('Welcome to Mortgage Calculator!')
-prompt('We will calulate your monthly payment for your mortgage.')
-Kernel.puts('-------------')
 
 loop do
-  prompt('Please enter the loan amount in dollars ($).')
-  ln_amount = usr_input.to_i
+  prompt('Please enter a loan amount in dollars.')
+  loan_amount = obtain_number
 
-  prompt('Please enter the loan duration in years.')
-  p ln_duration_years = usr_input
+  prompt('Please enter an annual percentage rate(APR) in percentage form.')
+  prompt('(Example: 5 for 5% or 2.5 for 2.5%)')
 
-  prompt('Please enter the annual interest rate (APR).')
-  prompt('For example: 6 is 6%; 10 is 10%).')
-  an_interest_rate = usr_input
-  mn_payment = monthly_payment(ln_amount, ln_duration_years, an_interest_rate)
-  prompt("Your monthly payment is: $#{mn_payment.round(2)}.")
+  percentage_rate_y = obtain_number
 
-  prompt("Would you like to make another calculation? Type 'y' or 'n'")
-  answer = nil
-  loop do
-    answer = Kernel.gets.chomp.downcase
-    break if %([y n]).include?(answer)
+  prompt('Please enter a loan duration in years.')
+  loan_duration_y = obtain_number
 
-    prompt('Please enter y or n.')
-  end
-  break if answer == 'n'
+  decimal_rate_m = percentage_rate_y / 12 / 100
+  loan_duration_m = loan_duration_y * 12
+  monthly_payment = loan_amount * (decimal_rate_m / (1 - (1 + decimal_rate_m)**-loan_duration_m))
+
+  prompt("Your monthly payment is: $#{format('%.2<foo>f', foo: monthly_payment)} ")
+  prompt('Would you like to calculate another monthly payment?')
+  answer = Kernel.gets.chomp
+  break unless answer.downcase.start_with?('y')
 end
 
-prompt('Thank you for using Mortgage Calculator. Have a great day!')
+prompt('Thank you for choosing Mortgage Calculator!')
+prompt('Good bye!')
