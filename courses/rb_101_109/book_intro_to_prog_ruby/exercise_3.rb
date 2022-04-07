@@ -1,11 +1,7 @@
-# Write a method that counts down to zero using recursion.
-def count_to_zero(number)
-  if number <= 0
-    puts number
-  else
-    puts number
-    count_to_zero(number-1)
-  end
-end
+# Now, using the same array from #2, use the select method to extract all odd numbers into a new array.
 
-count_to_zero(10)
+arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+p new_array = arr.select { |number| number % 2 != 0}
+
+# select returns a new array whose block value returns true. 
