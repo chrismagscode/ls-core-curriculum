@@ -9,3 +9,5 @@ arr.pop
 # arr << 3
 # or 
 arr.push(3)
+
+p arr
